@@ -20,15 +20,22 @@ function App() {
             {(mode) === "list" ? "Swich to learning mode" : "Swich to list mode" }
           </button>
       </div>
-      <div className="addCard">
-        <input />
-        <input />
-        <button> Add card </button>
-      </div>
-      <div className="list"></div>
       
-    </div>
-  );
-}
+        {/* if in learn mode, show learningModee.js, else show input form and list */}
+        {mode === "learn" && <LearningMode />}
+        
+        {mode === "list" && 
+            (<>
+            <div className="addCard">
+              <input />
+              <input />
+              <button> Add card </button>
+            </div>
+          <div className="list"></div>
+          </>)}
+            
+    
+  </div>);
+};
 
 export default App;
