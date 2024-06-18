@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { useState } from "react";
 
 function App() {
+
+  
+  //an array containing the created cards, set to empty initially
+  const [cardList, setCardList] = useState([]);
+  //set the default mode to list-mode
+  const [mode, setMode] = useState("list");
+  // function to change the mode
+  const changeMode = () => { setMode(mode === "list" ? "learn" : "list")
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="chooseMode">
+          <button onClick={changeMode}>
+            {(mode) === "list" ? "Swich to learning mode" : "Swich to list mode" }
+          </button>
+      </div>
+      <div className="addCard">
+        <input />
+        <input />
+        <button> Add card </button>
+      </div>
+      <div className="list"></div>
+      
     </div>
   );
 }
