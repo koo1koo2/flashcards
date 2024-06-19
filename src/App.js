@@ -32,12 +32,16 @@ function App() {
   
   const addCard = () => {
     const card = {
-      //id: ,
+      id: cardList.length === 0 ? 1 : cardList[cardList.length -1].id + 1,
       front: front,
       back: back,
     }
     
     setCardList([...cardList, card]);
+  }
+
+  const deleteCard = (id) => {
+    setCardList(cardList.filter((card) => card.id != id));
   }
 
   return (
@@ -61,7 +65,13 @@ function App() {
             
           <div className="list">
             {cardList.map((card) => {
-              return (<li>{card.front}</li> );})
+              return (
+              <>
+              <li>{card.front}</li> <button name="delete" onClick= {() => {
+
+              deleteCard(card.id)}}>Delete</button> 
+              </>
+              );})
             };
           </div>
           </>)
