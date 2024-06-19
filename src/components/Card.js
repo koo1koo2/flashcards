@@ -7,7 +7,7 @@ import { useState } from "react";
 
 
 
-const Card = ({card, currentMode, index}) => {
+const CardMode = ({card, currentMode, index}) => {
     
     const [showBack, setShowBack] = useState(false);
     const flip = () => { setShowBack(!showBack)};
@@ -23,3 +23,5 @@ const Card = ({card, currentMode, index}) => {
         </>) 
     );
 };
+
+export default CardMode;
