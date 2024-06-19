@@ -71,8 +71,8 @@ function App() {
 
               deleteCard(card.id)}}>Delete</button> 
               </>
-              );})
-            };
+              )})
+            }
           </div>
           </>)
           

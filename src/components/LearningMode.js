@@ -13,9 +13,10 @@ const LearningMode = ({cardList}) => {
         <div>
             
             <div>
-            {cardList[current].front}
-            {console.log("current" + current)}
-            {console.log("list" + cardList.length)};
+                <div name="flipCard" onClick={flip}>
+                    {showBack ? cardList[current].back : cardList[current].front}
+                    <p>Click to flip card</p>
+                </div>
             <button onClick={next}>Next</button>
             </div>
         </div>
