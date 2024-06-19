@@ -3,16 +3,19 @@ import { useState } from "react";
 
 //gets the flashcardsList, shows cards one by one
 const LearningMode = ({cardList}) => {
+    
     const [showBack, setShowBack] = useState(false);
     const flip = () => { setShowBack(!showBack)};
-
+    
     const [current, setCurrent] = useState(0);
-    const next = () => { setCurrent(current +1)};
+    const next = () => {{current < (cardList.length -1) ? setCurrent(current +1): setCurrent(0)}};
     return(
         <div>
             
             <div>
             {cardList[current].front}
+            {console.log("current" + current)}
+            {console.log("list" + cardList.length)};
             <button onClick={next}>Next</button>
             </div>
         </div>
