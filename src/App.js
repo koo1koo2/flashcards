@@ -1,6 +1,5 @@
-
 import './App.css';
-import CardMode from './components/Card';
+
 import LearningMode from './components/LearningMode';
 import { useState } from "react";
 
@@ -41,14 +40,14 @@ function App() {
   }
 
   const deleteCard = (id) => {
-    setCardList(cardList.filter((card) => card.id != id));
+    setCardList(cardList.filter((card) => card.id !== id));
   }
 
   return (
     <div className="App">
-      <div className="chooseMode">
-          <button onClick={changeMode}>
-            {(mode) === "list" ? "Swich to learning mode" : "Swich to list mode" }
+      <div className='mode'>
+          <button id="switch" onClick={changeMode}>
+            {(mode) === "list" ? "Switch to learning mode" : "Switch to list mode" }
           </button>
       </div>
       
@@ -67,9 +66,9 @@ function App() {
             {cardList.map((card) => {
               return (
               <>
-              <li>{card.front}</li> <button name="delete" onClick= {() => {
-
-              deleteCard(card.id)}}>Delete</button> 
+              <div name="cardlist">{card.front} - {card.back} <button id="delete" onClick= {() => {
+                
+              deleteCard(card.id)}}>X</button> </div>
               </>
               )})
             }
