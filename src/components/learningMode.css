@@ -16,7 +16,6 @@
     padding: 110px;
     line-height: 110px;
     cursor: pointer;
-    background-color: bisque;
     text-align: center;
     vertical-align: middle;
     border-radius: 10px;
@@ -25,11 +24,7 @@
     position: relative;
   }
   
-  .flipCard.show-back {
-    background-color: #f0f0f0;
-  }
-  
-  
+        
   #next {
     margin: 5px;
   position: absolute;

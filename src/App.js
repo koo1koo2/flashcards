@@ -35,8 +35,9 @@ function App() {
       front: front,
       back: back,
     }
-    
     setCardList([...cardList, card]);
+    setFront("");
+    setBack("");
   }
 
   const deleteCard = (id) => {
@@ -57,18 +58,22 @@ function App() {
         {mode === "list" && 
             (<>
             <div className="addCard">
-              <input  onChange={createCardFront}/>
-              <input  onChange={createCardBack}/>
-              <button onClick={addCard}> Add card </button>
+              <input  onChange={createCardFront} placeholder='Front side' value={front} required></input>
+              <input  onChange={createCardBack} placeholder='Back side' value={back} required></input>
+              <button onClick={addCard} id="add"> Add  </button>
             </div>
             
           <div className="list">
             {cardList.map((card) => {
               return (
               <>
-              <div name="cardlist">{card.front} - {card.back} <button id="delete" onClick= {() => {
-                
-              deleteCard(card.id)}}>X</button> </div>
+              <div id="cardlist">
+              <p id="front"> {card.front} </p> 
+              <p id="space"></p>  
+              <p id="back"> {card.back} </p>
+
+              <button id="delete" onClick= {() => {deleteCard(card.id)}}>X</button> 
+              </div>
               </>
               )})
             }
