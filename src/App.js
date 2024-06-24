@@ -8,16 +8,21 @@ function App() {
   //an array containing the created cards, set to empty initially
   const [cardList, setCardList] = useState([]);
   
+  const [isInitialized, setIsInitialized] = useState(false);
+  
   //load cards from localstorage when opened
   useEffect(() => {
-    const savedCards = JSON.parse(localStorage.getItem('flashcards')) || [];
-    setCardList(savedCards);
+    const savedCards = localStorage.getItem('flashcards');
+    savedCards ? setCardList(JSON.parse(savedCards)) : setCardList([]);
+    console.log('Loaded flashcards:', savedCards); // Debugging line
+    setIsInitialized(true); // Indicate that the initial load is complete
   }, []);
-
+console.log("the cards:", cardList);
   //save cardslist to localstorage
   useEffect(() => {
-    localStorage.setItem('flashcards', JSON.stringify(cardList));
-  }, [cardList]);
+    if (isInitialized) {localStorage.setItem('flashcards', JSON.stringify(cardList));}
+    console.log('Saving flashcards:', cardList); // Debugging line
+  }, [cardList,isInitialized]);
 
   const [front, setFront] = useState("");
     

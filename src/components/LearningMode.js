@@ -15,7 +15,7 @@ const LearningMode = ({cardList}) => {
     return(
         <div className="learningmode">
             <div>
-                <div class="flipCard" onClick={flip} style={cardStyle}>
+                <div className="flipCard" onClick={flip} style={cardStyle}>
                     {showBack ? cardList[current].back : cardList[current].front}
                     <p id="click">Click to flip card</p>
                 </div>
