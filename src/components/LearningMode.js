@@ -6,10 +6,12 @@ const LearningMode = ({cardList}) => {
     
     const [showBack, setShowBack] = useState(false);
     const flip = () => { setShowBack(!showBack)};
-    const cardStyle = showBack ? {backgroundColor :"lightcyan"} : {backgroundColor: "ivory"}
+    const cardStyle = showBack ? {backgroundColor :"lightcyan"} : {backgroundColor: "lightyellow"}
     
     const [current, setCurrent] = useState(0);
-    const next = () => {{current < (cardList.length -1) ? setCurrent(current +1): setCurrent(0)}};
+    const next = () => {{current < (cardList.length -1) ? setCurrent(current +1): setCurrent(0)}
+        setShowBack(false);                    
+    };
     return(
         <div className="learningmode">
             <div>

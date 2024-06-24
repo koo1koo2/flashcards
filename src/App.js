@@ -1,33 +1,43 @@
 import './App.css';
 
 import LearningMode from './components/LearningMode';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
-  //
-    const [front, setFront] = useState("");
-    const [back, setBack] =useState("");
-    const createCardFront = (event) => {
-    
-      setFront(event.target.value);
-  
-    }
-    const createCardBack = (event) => {
-    
-      setBack(event.target.value);
-  
-    }
-  
-  
-    
+
   //an array containing the created cards, set to empty initially
   const [cardList, setCardList] = useState([]);
+  
+  //load cards from localstorage when opened
+  useEffect(() => {
+    const savedCards = JSON.parse(localStorage.getItem('flashcards')) || [];
+    setCardList(savedCards);
+  }, []);
+
+  //save cardslist to localstorage
+  useEffect(() => {
+    localStorage.setItem('flashcards', JSON.stringify(cardList));
+  }, [cardList]);
+
+  const [front, setFront] = useState("");
+    
+  const [back, setBack] =useState("");
+    
+  const createCardFront = (event) => {
+    setFront(event.target.value);
+  }
+    
+  const createCardBack = (event) => {
+    setBack(event.target.value);
+  }
+       
+  
   //set the default mode to list-mode
   const [mode, setMode] = useState("list");
   // function to change the mode
   const changeMode = () => { setMode(mode === "list" ? "learn" : "list")};
 
-  
+      
   
   const addCard = () => {
     const card = {
@@ -69,7 +79,7 @@ function App() {
               <>
               <div id="cardlist">
               <p id="front"> {card.front} </p> 
-              <p id="space"></p>  
+              
               <p id="back"> {card.back} </p>
 
               <button id="delete" onClick= {() => {deleteCard(card.id)}}>X</button> 
